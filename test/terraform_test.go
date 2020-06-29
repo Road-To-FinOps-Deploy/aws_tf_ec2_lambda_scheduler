@@ -17,7 +17,7 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Give this lambda function a unique ID for a name so we can distinguish it from any other lambdas
 	// in your AWS account
-	functionName := "scheduler_ec2_stop" //, random.UniqueId()
+	functionName := "scheduler_ec2_start" //, random.UniqueId()
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
 	awsRegion := aws.GetRandomStableRegion(t, nil, nil)
