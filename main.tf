@@ -15,6 +15,11 @@ resource "aws_lambda_function" "ec2_start" {
   runtime          = "python3.7"
   memory_size      = "512"
   timeout          = "150"
+  environment {
+      variables = { 
+        REGION = var.aws_region
+      }
+    }
 }
 
 resource "aws_lambda_function" "ec2_stop" {
@@ -27,6 +32,11 @@ resource "aws_lambda_function" "ec2_stop" {
   runtime          = "python3.7"
   memory_size      = "512"
   timeout          = "150"
+  environment {
+      variables = { 
+        REGION = var.aws_region
+      }
+    }
 }
 
 resource "aws_lambda_permission" "allow_cloudwatch_ec2_start" {

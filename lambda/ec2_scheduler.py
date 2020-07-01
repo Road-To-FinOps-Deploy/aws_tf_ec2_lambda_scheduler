@@ -4,11 +4,11 @@ import os
 import logging
 
 TAG_SCHEDULER = os.getenv("TAG", "nightly")
-
+region = os.environ["REGION"]
 # define connections
 autosc = boto3.client("autoscaling")
 ec2 = boto3.resource("ec2")
-ec2_client = boto3.client("ec2", region_name="us-east-1")
+ec2_client = boto3.client("ec2", region_name=region)
 
 
 def setup():
@@ -130,5 +130,5 @@ def handler(event, context):
     stop_lambda_handler({}, {})
 
 if __name__ == "__main__":
-    start_lambda_handler({}, {})
+    #start_lambda_handler({}, {})
     stop_lambda_handler({}, {})
