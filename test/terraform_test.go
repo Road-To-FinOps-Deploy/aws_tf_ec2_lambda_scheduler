@@ -7,8 +7,8 @@ import (
 	"github.com/gruntwork-io/terratest/modules/aws"
 	// "github.com/gruntwork-io/terratest/modules/random"
 	"github.com/gruntwork-io/terratest/modules/terraform"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/require"
+	//"github.com/stretchr/testify/assert"
+	//"github.com/stretchr/testify/require"
 )
 
 // An example of how to test the Terraform module in examples/terraform-aws-example using Terratest.
@@ -17,7 +17,7 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Give this lambda function a unique ID for a name so we can distinguish it from any other lambdas
 	// in your AWS account
-	functionName := "scheduler_ec2_start" //, random.UniqueId()
+	// functionName := "scheduler_ec2_start" //, random.UniqueId()
 
 	// Pick a random AWS region to test in. This helps ensure your code works in all regions.
 	awsRegion := aws.GetRandomStableRegion(t, nil, nil)
@@ -29,10 +29,10 @@ func TestTerraformAwsExample(t *testing.T) {
 		
 		// Variables to pass to our Terraform code using -var options
 		
-		/*Vars: map[string]interface{}{
-			"function_prefix": functionName,
+		Vars: map[string]interface{}{
+			"aws_region": awsRegion,
 		},
-		
+		/*
 		// Environment variables to set when running Terraform
 		EnvVars: map[string]string{
 			"AWS_DEFAULT_REGION": awsRegion,
@@ -45,7 +45,7 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// website::tag::2::Run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
-
+	/*
 	// Invoke the function, so we can test its output
 	response := aws.InvokeFunction(t, awsRegion, functionName, ExampleFunctionPayload{ShouldFail: false, Echo: "hi!"})
 
@@ -54,14 +54,14 @@ func TestTerraformAwsExample(t *testing.T) {
 
 	// Invoke the function, this time causing it to error and capturing the error
 	response, err := aws.InvokeFunctionE(t, awsRegion, functionName, ExampleFunctionPayload{ShouldFail: true, Echo: "hi!"})
-
+	
 	// Function-specific errors have their own special return
 	functionError, ok := err.(*aws.FunctionError)
 	require.True(t, ok)
 
 	// Make sure the function-specific error comes back
 	assert.Contains(t, string(functionError.Payload), "Failed to handle")
-	/*
+	*//*
 	testingTag, containsTestingTag := instanceTags["testing"]
 	assert.True(t, containsTestingTag)
 	assert.Equal(t, "testing-tag-value", testingTag)
