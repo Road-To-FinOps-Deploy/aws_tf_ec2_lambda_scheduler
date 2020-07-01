@@ -130,5 +130,5 @@ def handler(event, context):
     stop_lambda_handler({}, {})
 
 if __name__ == "__main__":
-    #start_lambda_handler({}, {})
+    start_lambda_handler({}, {})
     stop_lambda_handler({}, {})
