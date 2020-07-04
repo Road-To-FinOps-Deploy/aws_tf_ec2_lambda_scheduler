@@ -10,7 +10,7 @@ The lambda affects only instances in the same region than your terraform.
 
 Remember this uses UTC Time
 
-Requires v3.6+ of EC2 autoscaling module & needs to have the following tag:
+Requires the following tag:
 ```
 extra_tags = [
     {
